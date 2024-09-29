@@ -19,13 +19,14 @@ export const ParentContentLayout = styled.div`
 `
 
 export const AppContent = styled(ParentContentLayout)`
-  & .image-container {
+  & .header-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     & img {
       width: 98%;
+      max-height: 50vh;
       border-radius: 2rem;
       margin: auto;
       box-shadow: 0 0 1rem 1rem black;
@@ -39,8 +40,12 @@ export const AppContent = styled(ParentContentLayout)`
     margin: 2rem auto 0 auto;
 
     & .text-content-container {
+      margin: 1rem 0;
+      padding: 1rem;
+      background-color: #f0f0f0;
       font-size: 2rem;
       text-align: center;
+      border-radius: .3rem;
     }
   }
 `

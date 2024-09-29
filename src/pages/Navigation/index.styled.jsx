@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const StyledNavigation = styled.nav`
   grid-area: Navigation;
@@ -14,10 +14,10 @@ export const StyledNavigation = styled.nav`
   background-color: #f0f0f0;
 `
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   text-decoration: none;
   padding: 0.25rem;
-  & .active, &:hover {
+  &.active, &:hover {
     color: #777;
   }
 `
@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
 export const SiteTitleLink = styled(StyledLink)`
   font-size: 2.75rem;
   font-family: Laila_Med;
-  & .active {
+  &.active {
     color: black;
   }
 `
@@ -33,9 +33,9 @@ export const SiteTitleLink = styled(StyledLink)`
 export const StyledUL = styled.ul`
   display: flex;
   justify-content: end;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-grow: 2;
   list-style: none;
-  fonst-sixe: 1.25rem;
+  font-size: 1.5rem;
   padding: 0;
 `

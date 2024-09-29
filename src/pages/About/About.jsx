@@ -1,6 +1,6 @@
 import React, { useState, UseEffect } from 'react'
 import { useLoaderData, Outlet } from 'react-router-dom'
-import { StyledAbout } from './index.styled'
+import { StyledAboutPage } from './index.styled'
 import { image } from '../../assets/images/danielBucket.jpg'
 
 export default function About() {
@@ -14,7 +14,7 @@ export default function About() {
   },[])
 
   return (
-    <StyledAbout>
+    <StyledAboutPage>
       <div className="header-container">
         <img src={ image } alt="image of Daniel Bucket" />
       </div>
@@ -23,6 +23,6 @@ export default function About() {
           
         </div>
       </div>
-    </StyledAbout>
+    </StyledAboutPage>
   )
 }
