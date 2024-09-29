@@ -20,7 +20,7 @@ export const StyledLink = styled(Link)`
   }
 
   & img {
-    height: 5rem;
+    height: 8rem;
   }
 
   & p {

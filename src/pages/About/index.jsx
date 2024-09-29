@@ -1,26 +1,26 @@
-import React, { useState, UseEffect } from 'react'
-import { useLoaderData, Outlet } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { StyledAboutPage } from './index.styled'
-import { image } from '../../assets/images/danielBucket.jpg'
+const image = require('../../assets/images/danielBucket.jpg')
 
 export default function About() {
-  const [image, setImage] = useState(null)
+  const [img, setImg] = useState(null)
   const [content, setContent] = useState({})
   const loaderData = useLoaderData()
 
   useEffect(() => {
     setContent(() => loaderData)
-    setImage(() => image)
+    setImg(() => image)
   },[])
 
   return (
     <StyledAboutPage>
       <div className="header-container">
-        <img src={ image } alt="image of Daniel Bucket" />
+        <img src={ img } alt="image of Daniel Bucket" />
       </div>
       <div className="body-container">
         <div className="text-container">
-          
+          <p>{content.text}</p>
         </div>
       </div>
     </StyledAboutPage>

@@ -4,16 +4,16 @@ export const StyledAppWrapper = styled.div`
   display: grid;
   justify-content: center;
   grid-template-rows:
-    [Navigation] 6rem
-    [MainContent] 1fr
-    [Footer] 5rem;
+    [Navigation] 10rem
+    [ParentContentLayout] 1fr
+    [Footer] 8rem;
   height: 100vh;
   width: 100vw;
 `
 
 export const ParentContentLayout = styled.div`
-  grid-area: MainContent;
-  padding-top: 1.75rem;
+  grid-area: ParentContentLayout;
+  padding-top: 3rem;
   height: 100%;
   font-family: 'Roboto';
 `
@@ -25,11 +25,10 @@ export const AppContent = styled(ParentContentLayout)`
     justify-content: center;
 
     & img {
-      width: 98%;
-      max-height: 50vh;
+      width: 92%;
       border-radius: 2rem;
       margin: auto;
-      box-shadow: 0 0 1rem 1rem black;
+      box-shadow: 0 0 0.75rem 0.3rem black;
     }
   }
   

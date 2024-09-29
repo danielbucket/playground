@@ -6,6 +6,7 @@ import './root.style.css'
 
 import Home from './pages/Home/index.jsx'
 import InDev from './pages/InDev/index.jsx'
+import About from './pages/About/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <InDev  text={'About'}/>,
+        element: <About />,
+        loader: async () => {
+          return {
+            text: 'Daniel Bucket is a software engineer with a passion for solving all of the worlds problems.',
+          }
+        },
       },
       {
         path: '/contact',

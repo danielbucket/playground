@@ -36,6 +36,6 @@ export const StyledUL = styled.ul`
   gap: 0.5rem;
   flex-grow: 2;
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 0;
 `
