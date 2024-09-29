@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet as MainContent } from 'react-router-dom'
-import Navigation from './components/Navigation.jsx'
-import Footer from './components/Footer.jsx'
+import Navigation from './pages/Navigation/index.jsx'
+import Footer from './pages/Footer/index.jsx'
 import { StyledAppWrapper } from './root.styled.js'
 
 export default function Root() {

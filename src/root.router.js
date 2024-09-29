@@ -1,22 +1,35 @@
 import React from 'react'
-import ReactDom from 'react-dom'
-import { createBrowserRouter } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './Root.jsx'
 import './root.style.css'
+
+import Home from './pages/Home/index.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <div>404 Not Found</div>
+    errorElement: <div>404 Not Found</div>,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+        loader: async () => {
+          return {
+            text: 'Solving all the worlds problems, one bucket of code at a time.',
+          }
+        },
+      },
+    ]
   }
 ])
 
-const root = ReactDom.createRoot(document.getELementBtId('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={ router }>
-      <Root />
-    </RouterProvider>
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={ router }>
+			<Root />
+		</RouterProvider>
+	</React.StrictMode>
 )

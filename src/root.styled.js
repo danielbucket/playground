@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const StyledAppWrapper = styled.div`
   display: grid;
   justify-content: center;
-  grid-template-rows: 1
+  grid-template-rows:
     [Navigation] 6rem
     [MainContent] 1fr
     [Footer] 5rem;

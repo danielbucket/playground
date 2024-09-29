@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyledNavigation, StyledLink, SiteTitleLink, StyledUL } from './index.styled'
+import { StyledNavigation, StyledLink, SiteTitleLink, StyledUL } from './index.styled.jsx'
 
 export default function Navigation() {
   return (
     <StyledNavigation>
-      <SiteTitleLink to='/'></SiteTitleLink>
+      <SiteTitleLink to='/'>Bucket, LLC</SiteTitleLink>
       <StyledUL>
         <CustomLink to='/about'>About</CustomLink>
         <CustomLink to='/contact'>Contact</CustomLink>
