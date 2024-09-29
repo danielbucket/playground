@@ -1,12 +1,12 @@
 {
   "name": "playground",
   "version": "1.0.0",
-  "description": "An api playground",
+  "description": "My personal portfolio, and playground for new technologies",
   "main": "index.js",
   "scripts": {
     "dev": "node ./server/server.js --config webpack.config.js --mode development",
     "build": "webpack --config webpack.config.js --mode production",
-    "server": "npm run build && node ./server/server.js"
+    "server": "node ./server/server.js"
   },
   "author": "bucketlimited",
   "license": "ISC",

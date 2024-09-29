@@ -5,6 +5,7 @@ import Root from './Root.jsx'
 import './root.style.css'
 
 import Home from './pages/Home/index.jsx'
+import InDev from './pages/InDev/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,20 @@ const router = createBrowserRouter([
           }
         },
       },
-    ]
-  }
+      {
+        path: '/about',
+        element: <InDev  text={'About'}/>,
+      },
+      {
+        path: '/contact',
+        element: <InDev text={'Contact'} />,
+      },
+      {
+        path: '/projects',
+        element: <InDev text={'Projects'}/>,
+      },
+    ],
+  },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
