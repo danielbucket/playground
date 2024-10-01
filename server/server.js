@@ -9,7 +9,7 @@ const webpackConfig = require('../webpack.config')
 const { publicPath } = webpackConfig.output
 const compiler = webpack(webpackConfig)
 
-const router = require('./router')
+const router = require('./router.js')
 
 app.use(cors())
 app.use(express.json())

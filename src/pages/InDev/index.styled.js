@@ -13,5 +13,5 @@ export const StyledNavLink = styled(NavLink)`
 `
 
 export const StyledInDevPage = styled(AppContent)`
-
+  
 `

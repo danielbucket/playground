@@ -7,6 +7,9 @@ import './root.style.css'
 import Home from './pages/Home/index.jsx'
 import InDev from './pages/InDev/index.jsx'
 import About from './pages/About/index.jsx'
+import Contact from './pages/Contact/index.jsx'
+
+const path = '/api/v1'
 
 const router = createBrowserRouter([
   {
@@ -18,27 +21,47 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
         loader: async () => {
-          return {
-            text: 'Solving all the worlds problems, one bucket of code at a time.',
-          }
+          return await fetch(`${path}/home/GET_content`)
+            .then(res => res.json())
+            .then(data => data)
+            .catch(err => console.error(err))
         },
       },
       {
         path: '/about',
         element: <About />,
         loader: async () => {
-          return {
-            text: 'Daniel Bucket is a software engineer with a passion for solving all of the worlds problems.',
-          }
+          return await fetch(`${path}/about/GET_content`)
+            .then(res => res.json())
+            .then(data => data)
+            .catch(err => console.error(err))
         },
       },
       {
         path: '/contact',
-        element: <InDev text={'Contact'} />,
+        element: <Contact />,
+        loader: async () => {
+          return await fetch(`${path}/contact/GET_content`)
+            .then(res => res.json())
+            .then(data => data)
+            .catch(err => console.error(err))
+        },
+        children: [
+          {
+            path: '/contact/contact_form',
+            element: <InDev text={'Contact Form'}/>,
+          },
+        ],
       },
       {
         path: '/projects',
         element: <InDev text={'Projects'}/>,
+        loader: async () => {
+          return await fetch(`${path}/projects/GET_content`)
+            .then(res => res.json())
+            .then(data => data)
+            .catch(err => console.error(err))
+        },
       },
     ],
   },
