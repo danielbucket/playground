@@ -23,8 +23,9 @@ export const StyledLink = styled(NavLink)`
 `
 
 export const SiteTitleLink = styled(StyledLink)`
-  font-size: 2.75rem;
+  font-size: clamp(2rem, 2.75rem, 5rem);
   font-family: Laila_Med;
+  width: 30%;
   &.active {
     color: black;
   }
@@ -34,7 +35,7 @@ export const StyledUL = styled.ul`
   display: flex;
   justify-content: end;
   gap: 0.5rem;
-  flex-grow: 2;
+  flex-grow: 1;
   list-style: none;
   font-size: 2rem;
   padding: 0;

@@ -12,7 +12,7 @@ export default function InDev({ text }) {
       </div>
       <div className="body-container">
         <div className="text-content-container">
-          <p>This page '<span>{ text }</span>', is currently in development.</p>
+          <p>The <span>{ text }</span> page is currently in development.</p>
           <p>Check back later for updates.</p>
           <StyledNavLink to="/">Click to return home</StyledNavLink>
         </div>

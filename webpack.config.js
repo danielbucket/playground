@@ -3,8 +3,17 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Dotenv = require('dotenv-webpack')
-const devMode = process.env.NODE_ENV !== "production"
+
+// const devMode = process.env.NODE_ENV !== "production"
+// node_env is not being set in the webpack.config.js file
+// --mode flag is being used, but webpack.config isn't reading it
+
+//set to true for development, false for production
+const devMode = true
+
+
 const mode = devMode ? 'development' : 'production'
+console.log('mode: ', mode)
 
 const paths = {
 	DIST: path.resolve(__dirname, 'dist'),
@@ -16,7 +25,7 @@ const paths = {
 
 module.exports = {
 	mode: mode,
-	devtool: devMode ? 'inline-source-map' : '',
+	devtool: devMode ? 'inline-source-map' : false,
 	entry: {
 		home: './src/root.router.js',
 		shared: ['react', 'react-dom'],
@@ -80,17 +89,3 @@ module.exports = {
 		],
 	},
 }
-
-
-
-
-
-// plugins: [
-//   new HtmlWebpackPlugin({
-//     title: 'Home Playground',
-//     description: 'A personal portfolio and a playground for my web development and IoT projects',
-//     filename: 'playground.html',
-//     template: path.join(paths.TEMPLATES, 'app_template.html'),
-//   }),
-//   new Doetenv()
-// ].concat(devMode ? [] : [ new MiniCssExtractPlugin({ filename: 'root.style.css' }) ]),

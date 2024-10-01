@@ -20,7 +20,9 @@ export default function About() {
       </div>
       <div className="body-container">
         <div className="text-container">
-          <p>{content.text}</p>
+          <p>{content.bio}</p>
+          <p>{content.name}</p>
+          <p>{content.title}</p>
         </div>
       </div>
     </StyledAboutPage>
