@@ -4,8 +4,8 @@
   "description": "My personal portfolio, and playground for new technologies",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./server/server.js --config webpack.config.js --mode development",
-    "build": "webpack --config webpack.config.js --mode=production",
+    "dev": "node ./server/server.js --node-env development --config webpack.config.js",
+    "build": "webpack --mode=production --config webpack.config.js --env MODE=production",
     "start": "node ./server/server.js"
   },
   "author": "bucketlimited",
@@ -40,6 +40,7 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-middleware": "^6.1.1"
+    "webpack-dev-middleware": "^6.1.1",
+    "webpack-hot-middleware": "^2.26.1"
   }
 }

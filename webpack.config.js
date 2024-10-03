@@ -4,16 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Dotenv = require('dotenv-webpack')
 
-// const devMode = process.env.NODE_ENV !== "production"
 // node_env is not being set in the webpack.config.js file
-// --mode flag is being used, but webpack.config isn't reading it
+// --mode=production flag is being used, but webpack.config isn't reading it
 
-//set to true for development, false for production
-const devMode = true
-
-
-const mode = devMode ? 'development' : 'production'
-console.log('mode: ', mode)
+const { MODE } = process.env
+// true == development, false == production
+const inDev = MODE !== 'development'
+const mode = inDev ? 'development' : 'production'
 
 const paths = {
 	DIST: path.resolve(__dirname, 'dist'),
@@ -25,7 +22,7 @@ const paths = {
 
 module.exports = {
 	mode: mode,
-	devtool: devMode ? 'inline-source-map' : false,
+	devtool: inDev ? 'inline-source-map' : false,
 	entry: {
 		home: './src/root.router.js',
 		shared: ['react', 'react-dom'],
@@ -38,16 +35,14 @@ module.exports = {
 	},
 
 	plugins: [
+		new Dotenv(),
 		new HtmlWebpackPlugin({
 			title: 'Home Playground',
       description: 'A personal portfolio and a playground for my web development and IoT projects',
       filename: 'playground.html',
       template: path.join(paths.TEMPLATES, 'app_template.hbs'),
 		}),
-		new Dotenv(),
-	].concat(devMode === 'development' ? [] : [
-			new MiniCssExtractPlugin({ filename: 'playground.style.css' })
-	]),
+	].concat(!inDev ? new MiniCssExtractPlugin({ filename: 'playground.style.css' }) : []),
   
 	module: {
 		rules: [
@@ -55,9 +50,7 @@ module.exports = {
 	      test: /\.css$/,
 				exclude: /node_modules/,
 	      use: [
-	      	devMode
-	      		? "style-loader"
-	      		: MiniCssExtractPlugin.loader, "css-loader"
+	      	inDev ? "style-loader" : MiniCssExtractPlugin.loader, "css-loader",
       	],
 	    },
 			{
