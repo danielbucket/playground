@@ -6,12 +6,11 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const cors = require('cors')
 
 const app = express()
-const webpackConfig = require('../webpack.config')
+const webpackConfig = require('../webpack.config')()
 const router = require('./router.js')
 const DIST = webpackConfig.output.path
 const PORT = process.env.PORT || 3648
 const { publicPath } = webpackConfig.output
-
 const compiler = webpack(webpackConfig)
 const { mode } = webpackConfig
 
