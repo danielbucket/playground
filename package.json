@@ -4,8 +4,8 @@
   "description": "My personal portfolio, and playground for new technologies",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --config webpack.config.js --env MODE=development && node ./server/server.js ",
-    "build": "webpack --config webpack.config.js --env MODE=production",
+    "dev": " node ./server/server.js webpack --config webpack.config.js --env NODE_ENV=development",
+    "build": "webpack --config webpack.config.js --env NODE_ENV=production",
     "start": "node ./server/server.js"
   },
   "author": "bucketlimited",

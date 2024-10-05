@@ -13,9 +13,19 @@ module.exports = (env) => {
 		PUBLIC_PATH: process.env.PUBLIC_PATH || '/',
 	}
 
-	const inDev = env?.MODE === 'development'
+	if (!env?.NODE_ENV) {
+		console.log('NODE_ENV not set')
+		process.exit(1)
+	}
+
+	if (env.NODE_ENV !== 'development' && env.NODE_ENV !== 'production') {
+		console.log('NODE_ENV must be set to either development or production')
+		process.exit(1)
+	}
+
+	const inDev = env.NODE_ENV === 'development'
 	const mode = inDev ? 'development' : 'production'
-	console.log('Compile Mode @ Webpack: ', mode)
+		console.log('Compile Mode @ Webpack: ', mode)
 
 	return {
 		mode: mode,
@@ -34,10 +44,13 @@ module.exports = (env) => {
 		plugins: [
 			new Dotenv(),
 			new HtmlWebpackPlugin({
-				title: 'Home Playground',
+				title: 'My Playground',
 				description: 'A personal portfolio and a playground for my web development and IoT projects',
 				filename: 'playground.html',
 				template: path.join(paths.TEMPLATES, 'app_template.hbs'),
+			}),
+			new webpack.DefinePlugin({
+				'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
 			}),
 		].concat(!inDev ? new MiniCssExtractPlugin({ filename: 'playground.style.css' }) : []),
 		
