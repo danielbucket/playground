@@ -1,34 +1,32 @@
 const path = require('path')
+const fs = require('fs')
 const express = require('express')
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+// const webpackDevMiddleware = require('webpack-dev-middleware')
+// const webpackHotMiddleware = require('webpack-hot-middleware')
 const cors = require('cors')
 
 const app = express()
-const webpackConfig = require('../webpack.config')()
 const router = require('./router.js')
-const DIST = webpackConfig.output.path
 const PORT = process.env.PORT || 3648
-const { publicPath } = webpackConfig.output
-const compiler = webpack(webpackConfig)
-const { mode } = webpackConfig
 
-console.log('Compile Mode @ Server: ', mode)
+
 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-if (mode === 'development') {
-  app.use(webpackDevMiddleware(compiler, { publicPath, index: 'playground.html' }))
-  app.use(webpackHotMiddleware(compiler))
-}
+// app.use(webpackDevMiddleware(compiler, { publicPath, index: 'playground.html' }))
+// app.use(webpackHotMiddleware(compiler))
+app.use('/static', express.static(path.resolve(__dirname, '../dist')))
 
-if (mode === 'production') {
-  app.use('/', (req,res) => res.sendFile(path.join(DIST, 'playground.html')))
-}
+app.use('/', (req,res) => {
+  const pathToFile = path.resolve(__dirname, '../dist', 'playground.html')
+  const fileContent = fs.readFileSync(pathToFile, 'utf-8')
 
+
+  res.send(fileContent)
+  // res.sendFile(pathToFile)
+})
 app.use('/api/v1', router)
 
 app.listen(PORT, () => {

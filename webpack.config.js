@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = (env) => {
+	console.log('NODE_ENV: ', env)
 	const paths = {
 		DIST: path.resolve(__dirname, 'dist'),
 		SRC: path.resolve(__dirname, 'src'),
@@ -37,7 +38,7 @@ module.exports = (env) => {
 		output: {
 			filename: '[name].[contenthash].js',
 			path: paths.DIST,
-			publicPath: paths.PUBLIC_PATH,
+			publicPath: '/static/',
 			clean: true,
 		},
 	
