@@ -36,7 +36,7 @@ module.exports = (env) => {
 			shared: ['react', 'react-dom'],
 		},
 		output: {
-			filename: '[name].[contenthash].js',
+			filename: '[name].[contenthash].jsx',
 			path: paths.DIST,
 			publicPath: '/static/',
 			clean: true,

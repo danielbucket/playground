@@ -21,11 +21,10 @@ app.use('/static', express.static(path.resolve(__dirname, '../dist')))
 
 app.use('/', (req,res) => {
   const pathToFile = path.resolve(__dirname, '../dist', 'playground.html')
-  const fileContent = fs.readFileSync(pathToFile, 'utf-8')
+  // const fileContent = fs.readFileSync(pathToFile, 'utf-8')
 
-
-  res.send(fileContent)
-  // res.sendFile(pathToFile)
+  // res.send(fileContent)
+  res.sendFile(path.join(__dirname, '../dist', 'playground.html'))
 })
 app.use('/api/v1', router)
 
