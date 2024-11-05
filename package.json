@@ -2,11 +2,11 @@
   "name": "playground",
   "version": "1.0.0",
   "description": "My personal portfolio, and playground for new technologies",
-  "main": "./dist/playground.js",
+  "main": "./src/Root.jsx",
   "homepage": "http://www.bucket.limited/",
   "scripts": {
-    "dev": "webpack --config webpack.config.js --env NODE_ENV=development",
-    "build": "webpack --config webpack.config.js --env NODE_ENV=production",
+    "dev": "webpack serve --config webpack.dev.config.js --hot",
+    "build": "webpack --config webpack.production.config.js",
     "start": "node ./server/server.js"
   },
   "author": "bucketlimited",
@@ -42,6 +42,7 @@
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-middleware": "^6.1.1",
+    "webpack-dev-server": "^5.1.0",
     "webpack-hot-middleware": "^2.26.1"
   }
 }
