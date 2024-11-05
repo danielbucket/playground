@@ -3,11 +3,12 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Dotenv = require('dotenv-webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
 	mode: 'production',
 	entry: {
-		home: './src/root.router.js',
+		home: ['webpack-hot-middleware/client', '/src/root.router.js'],
 		shared: ['react', 'react-dom'],
 	},
 	output: {
@@ -16,20 +17,25 @@ module.exports = {
 		publicPath: '/dist',
 		clean: true,
 	},
-
+	optimization: {
+		splitChunks: {
+				chunks: 'all',
+				minSize: 1000,
+				automaticNameDelimiter: '_'
+		}
+	},
 	plugins: [
 		new Dotenv(),
+		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
 		new HtmlWebpackPlugin({
-			filename: 'playground.html',
-			title: 'My Playground',
-			description: 'A personal portfolio and a playground for my web development and IoT projects.',
+			filename: 'bucketlab.html',
+			title: 'Bucketlab',
+			description: 'A personal portfolio and a home lab for my web development and IoT projects.',
 			template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
 			minify: true,
 		}),
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': 'production',
-		}),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 	
 	module: {
@@ -69,4 +75,4 @@ module.exports = {
 			},
 		],
 	},
-}
+};

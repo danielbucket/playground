@@ -7,18 +7,18 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),
     port: 3648,
     static: {
         directory: path.resolve(__dirname, './dist'),
     },
     hot: true,
     devMiddleware: {
-        index: 'playground.html',
+        index: 'bucketlab.html',
+        writeToDisk: true,
     }
   },
   entry: {
-    home: './src/root.router.js',
+    bucketlab: './src/root.router.js',
     shared: ['react', 'react-dom'],
   },
   output: {
@@ -32,9 +32,9 @@ module.exports = {
     new Dotenv(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'playground.html',
-      title: 'My Playground',
-      description: 'A personal portfolio and a playground for my web development and IoT projects.',
+      filename: 'bucketlab.html',
+      title: 'BucketLab',
+      description: 'A personal portfolio and a home lab for my web development and IoT projects.',
       template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
       minify: false,
     }),
