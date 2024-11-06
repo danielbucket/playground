@@ -11,11 +11,12 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.use(express.static(path.resolve(__dirname, '../dist')))
+
 app.use('/', (req,res) => {
-  const pathToFile = path.resolve(__dirname, '../dist', 'bucketlab.html')
-  const fileContent = fs.readFileSync(pathToFile, 'utf-8')
-  res.send(fileContent)
+  res.sendFile(path.resolve(__dirname, '../dist', 'bucketlab.html'))
 })
+
 app.use('/api/v1', router)
 
 app.listen(PORT, () => {

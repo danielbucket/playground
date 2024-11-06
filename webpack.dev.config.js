@@ -5,6 +5,16 @@ const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   mode: 'development',
+  entry: {
+    bucketlab: ['webpack-hot-middleware/client', './src/root.router.js'],
+    shared: ['react', 'react-dom'],
+  },
+  output: {
+    filename: '[name].[contenthash].js`',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/dist',
+    clean: true,
+  },
   devtool: 'inline-source-map',
   devServer: {
     port: 3648,
@@ -17,17 +27,6 @@ module.exports = {
         writeToDisk: true,
     }
   },
-  entry: {
-    bucketlab: './src/root.router.js',
-    shared: ['react', 'react-dom'],
-  },
-  output: {
-    filename: '[name].[contenthash].js`',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist',
-    clean: true,
-  },
-
   plugins: [
     new Dotenv(),
     new CleanWebpackPlugin(),
@@ -39,7 +38,6 @@ module.exports = {
       minify: false,
     }),
   ],
-  
   module: {
     rules: [
       {

@@ -8,12 +8,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
 	mode: 'production',
 	entry: {
-		home: ['webpack-hot-middleware/client', '/src/root.router.js'],
+		bucketlab: '/src/root.router.js',
 		shared: ['react', 'react-dom'],
 	},
 	output: {
-		filename: '[name].[contenthash].js`',
-		path: path.resolve(__dirname, './dist'),
+		filename: '[name].[contenthash].js',
+		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/dist',
 		clean: true,
 	},
@@ -30,10 +30,11 @@ module.exports = {
 		new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
 		new HtmlWebpackPlugin({
 			filename: 'bucketlab.html',
-			title: 'Bucketlab',
-			description: 'A personal portfolio and a home lab for my web development and IoT projects.',
+			title: 'BucketLab',
+			description: 'Personal portfolio and development laboratory for web development and IoT projects.',
 			template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
 			minify: true,
+			chunks: ['bucketlab'],
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 	],
@@ -48,16 +49,26 @@ module.exports = {
 				],
 			},
 			{
-				test: /\.(jsx|js)$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: "babel-loader",
 					options: {
-						presets: [ '@babel/env' ],
-						plugins: [ '@babel/plugin-proposal-class-properties' ],
-					},
-				},
+						presets: [ "@babel/preset-env", "@babel/preset-react" ],
+					}
+				}
 			},
+			// {
+			// 	test: /\.(jsx|js)$/,
+			// 	exclude: /node_modules/,
+			// 	use: {
+			// 		loader: 'babel-loader',
+			// 		options: {
+			// 			presets: [ '@babel/env' ],
+			// 			plugins: [ '@babel/plugin-proposal-class-properties' ],
+			// 		},
+			// 	},
+			// },
 			{
 				test: /\.hbs$/,
 				exclude: /node_modules/,
