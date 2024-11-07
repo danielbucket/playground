@@ -37,6 +37,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
       minify: false,
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     rules: [

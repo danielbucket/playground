@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Dotenv = require('dotenv-webpack')
@@ -7,6 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
 	mode: 'production',
+	target: 'node',
+	devtool: 'source-map',
 	entry: {
 		bucketlab: '/src/root.router.js',
 		shared: ['react', 'react-dom'],
@@ -33,10 +34,9 @@ module.exports = {
 			title: 'BucketLab',
 			description: 'Personal portfolio and development laboratory for web development and IoT projects.',
 			template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
-			minify: true,
+			minify: true, // minify is true by default
 			chunks: ['bucketlab'],
 		}),
-		new webpack.HotModuleReplacementPlugin(),
 	],
 	
 	module: {
@@ -48,27 +48,16 @@ module.exports = {
 					MiniCssExtractPlugin.loader, "css-loader"
 				],
 			},
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						presets: [ "@babel/preset-env", "@babel/preset-react" ],
-					}
-				}
-			},
-			// {
-			// 	test: /\.(jsx|js)$/,
-			// 	exclude: /node_modules/,
-			// 	use: {
-			// 		loader: 'babel-loader',
-			// 		options: {
-			// 			presets: [ '@babel/env' ],
-			// 			plugins: [ '@babel/plugin-proposal-class-properties' ],
-			// 		},
-			// 	},
-			// },
+      {
+        test: /\.(js|.jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ "@babel/preset-env", "@babel/preset-react" ],
+          }
+        }
+      },
 			{
 				test: /\.hbs$/,
 				exclude: /node_modules/,

@@ -1,13 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Root from './Root.jsx'
+import Root from './Root.js'
 import './root.style.css'
 
-import Home from './pages/Home/index.jsx'
-import InDev from './pages/InDev/index.jsx'
-import About from './pages/About/index.jsx'
-import Contact from './pages/Contact/index.jsx'
+import Home from './pages/Home/index.js'
+import InDev from './pages/InDev/index.js'
+import About from './pages/About/index.js'
+import Contact from './pages/Contact/index.js'
 
 const path = '/api/v1'
 
@@ -68,6 +68,7 @@ const router = createBrowserRouter([
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
 root.render(
 	<React.StrictMode>
 		<RouterProvider router={ router }>

@@ -2,12 +2,11 @@
   "name": "playground",
   "version": "1.0.0",
   "description": "My personal portfolio, and playground for new technologies",
-  "main": "./src/Root.jsx",
+  "main": "./src/index.js",
   "homepage": "http://www.bucket.limited/",
   "scripts": {
-    "dev": "webpack serve --config webpack.dev.config.js --hot",
-    "build": "webpack --config webpack.production.config.js",
-    "start": "node ./server/server.js"
+    "dev": "webpack serve --config webpack.dev.js --hot",
+    "build": "webpack --config webpack.prod.js"
   },
   "author": "bucketlimited",
   "license": "ISC",
@@ -16,7 +15,7 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@octokit/core": "^5.1.0",
-    "express": "^4.18.2",
+    "babel-loader": "^9.2.1",
     "import": "^0.0.6",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
@@ -27,8 +26,8 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.25.9",
     "@eslint/js": "^9.11.1",
-    "babel-loader": "^9.2.1",
     "clean-webpack-plugin": "^4.0.0",
     "cors": "^2.8.5",
     "css-loader": "^6.8.1",
@@ -42,6 +41,7 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-middleware": "^6.1.1",
     "webpack-dev-server": "^5.1.0",
-    "webpack-hot-middleware": "^2.26.1"
+    "webpack-hot-middleware": "^2.26.1",
+    "webpack-merge": "^6.0.1"
   }
 }

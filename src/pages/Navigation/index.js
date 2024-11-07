@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledNavigation, StyledLink, SiteTitleLink, StyledUL } from './index.styled.jsx'
+import { StyledNavigation, StyledLink, SiteTitleLink, StyledUL } from './index.styled.js'
 
 export default function Navigation() {
   return (

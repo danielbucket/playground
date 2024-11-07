@@ -1,27 +1,27 @@
 @font-face {
 	font-family: Laila_Med;
-	src: url(/dist2abc7011d7e80ebe7846.ttf);
+	src: url(/2abc7011d7e80ebe7846.ttf);
 }
 
 @font-face {
 	font-family: Roboto;
-	src: url(/distfc2b5060f7accec5cf74.ttf);
+	src: url(/fc2b5060f7accec5cf74.ttf);
 }
 
 @font-face {
 	font-family: Orbitron;
-	src: 	url(/dist7228a1c750b75b23bdb4.ttf),
+	src: 	url(/7228a1c750b75b23bdb4.ttf),
 				format('truetype');
 }
 
 @font-face {
 	font-family: Ubuntu_Reg;
-	src: url(/dist1cbb1b79a23478cc89ad.ttf);
+	src: url(/1cbb1b79a23478cc89ad.ttf);
 }
 
 @font-face {
 	font-family: KodeMono_Var;
-	src: url(/dist03f4ac379bf609891e0f.ttf);
+	src: url(/03f4ac379bf609891e0f.ttf);
 }
 
 :root {
@@ -69,3 +69,5 @@ html, body {
 body {
 	background-color: #d9d9d9;
 }
+
+/*# sourceMappingURL=main.f49b9ce94ce91cca3a85.css.map*/
