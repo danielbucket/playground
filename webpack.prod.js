@@ -30,7 +30,7 @@ module.exports = {
 				test: /\.css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
-			{
+      {
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				exclude: /node_modules/,
 				type: 'asset/resource',
@@ -48,12 +48,16 @@ module.exports = {
           options: {
             targets: "defaults",
             presets: [
-              "@babel/preset-env",
-              "@babel/preset-react"
+              ["@babel/preset-env"],
+              ["@babel/preset-react"]
+            ],
+            plugins: [
+              ["@babel/transform-class-properties"],
+              ["@babel/plugin-transform-runtime"]
             ]
           }
         }
-      }
+      },
 		]
 	}
 }

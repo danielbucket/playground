@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3648
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended:true }))
-// app.use(express.static(path.resolve(__dirname, '../dist')))
+app.use(express.static(path.resolve(__dirname, '../dist')))
 
 app.use('/', (req,res) => {
   // res.set('Content-Type', 'text/javascript')
