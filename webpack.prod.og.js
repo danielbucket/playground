@@ -38,7 +38,6 @@ module.exports = {
 			chunks: ['bucketlab'],
 		}),
 	],
-	
 	module: {
 		rules: [
 			{

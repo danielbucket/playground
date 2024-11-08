@@ -1,21 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Root from './Root.js'
-import './root.style.css'
+import App from './App.js'
+import './app.style.css'
 
 import Home from './pages/Home/index.js'
 import InDev from './pages/InDev/index.js'
 import About from './pages/About/index.js'
 import Contact from './pages/Contact/index.js'
+import ErrorBoundary from './pages/ErrorBoundary/index.js'
 
 const path = '/api/v1'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
-    errorElement: <div>404 Not Found</div>,
+    element: <Home />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
@@ -72,7 +73,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
 	<React.StrictMode>
 		<RouterProvider router={ router }>
-			<Root />
+			<App />
 		</RouterProvider>
 	</React.StrictMode>
 )

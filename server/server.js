@@ -1,6 +1,10 @@
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
+// const webpack = require('webpack')
+// const webpackDevMiddleware = require('webpack-dev-middleware')
+// const config = require('../webpack.dev.js')
+// const compiler = webpack(config)
 
 const app = express()
 const router = require('./router.js')
@@ -11,10 +15,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended:true }))
 app.use(express.static(path.resolve(__dirname, '../dist')))
 
+// app.use(webpackDevMiddleware(compiler, {
+//   publicPath: config.output.publicPath,
+// }))
+
 app.use('/', (req,res) => {
-  // res.set('Content-Type', 'text/javascript')
   res.sendFile(path.resolve(__dirname, '../dist', 'index.html'))
-  // res.render(path.resolve(__dirname, '../dist', 'bucketlab.html'))
 })
 
 app.use('/api/v1', router)

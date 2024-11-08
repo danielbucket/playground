@@ -14,15 +14,17 @@ export default function Homepage() {
   },[])
 
   return (
-    <StyledHomePage>
-      <div className="header-container">
-        <img src={ image } alt="image of a truck" />
-      </div>
-      <div className="body-container">
-        <div className="text-content-container">
-          <p>{content.text}</p>
+    <>
+      <StyledHomePage>
+        <div className="header-container">
+          <img src={ image } alt="image of a truck" />
         </div>
-      </div>
-    </StyledHomePage>
+        <div className="body-container">
+          <div className="text-content-container">
+            <p>{content.text}</p>
+          </div>
+        </div>
+      </StyledHomePage>
+    </>
   )
 }

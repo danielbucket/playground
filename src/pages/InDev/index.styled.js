@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { AppContent } from '../../root.styled'
+import { AppContent } from '../../app.styled'
 import { NavLink } from 'react-router-dom'
 
 export const StyledNavLink = styled(NavLink)`

@@ -1,18 +1,15 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   mode: 'development',
-  entry: {
-    bucketlab: ['webpack-hot-middleware/client', './src/root.router.js'],
-    shared: ['react', 'react-dom'],
-  },
+  entry: './src/index.js',
   output: {
-    filename: '[name].[contenthash].js`',
+    filename: 'main.[contenthash].js`',
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist',
+    publicPath: '/',
     clean: true,
   },
   devtool: 'inline-source-map',
@@ -23,16 +20,15 @@ module.exports = {
     },
     hot: true,
     devMiddleware: {
-        index: 'bucketlab.html',
+        index: 'index.html',
         writeToDisk: true,
     }
   },
   plugins: [
-    new Dotenv(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'bucketlab.html',
       title: 'BucketLab',
+      filename: 'index.html',
       description: 'A personal portfolio and a home lab for my web development and IoT projects.',
       template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
       minify: false,
@@ -49,15 +45,22 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jsx|js)$/,
+        test: /\.(?:js|jsx|mjs|cjs)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/env' ],
-            plugins: [ '@babel/plugin-proposal-class-properties' ],
-          },
-        },
+            targets: "defaults",
+            presets: [
+              ["@babel/preset-env"],
+              ["@babel/preset-react"]
+            ],
+            plugins: [
+              ["@babel/transform-class-properties"],
+              ["@babel/plugin-transform-runtime"]
+            ]
+          }
+        }
       },
       {
         test: /\.hbs$/,

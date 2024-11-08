@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { AppContent } from '../../root.styled.js'
+import { AppContent } from '../../app.styled.js'
 
 export const StyledContactPage = styled(AppContent)``
 

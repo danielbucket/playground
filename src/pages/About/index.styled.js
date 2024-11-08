@@ -1,4 +1,4 @@
 import styled from 'styled-components'
-import { AppContent } from '../../root.styled'
+import { AppContent } from '../../app.styled'
 
 export const StyledAboutPage = styled(AppContent)``

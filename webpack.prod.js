@@ -12,14 +12,20 @@ module.exports = {
 		publicPath: '/',
 		clean: true,
 	},
-
+	optimization: {
+		splitChunks: {
+				chunks: 'all',
+				minSize: 1000,
+				automaticNameDelimiter: '_'
+		}
+	},
 	plugins: [
 		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
 		new HtmlWebpackPlugin({
 			title: 'BucketLab',
 			filename: 'index.html',
 			template: 'templates/app_template.hbs',
-			description: 'BucketLab',
+			description: 'A personal portfolio and a home lab for my web development and IoT projects.',
 			minify: true,
 			chunks: ['main'],
 		})
@@ -28,6 +34,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
+				exclude: /node_modules/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
       {
@@ -39,6 +46,11 @@ module.exports = {
 				test: /\.hbs$/,
 				exclude: /node_modules/,
 				use: ['handlebars-loader'],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				exclude: /node_modules/,
+				type: 'asset/resource',
 			},
       {
         test: /\.(?:js|jsx|mjs|cjs)$/,
