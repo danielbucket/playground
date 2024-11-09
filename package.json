@@ -6,7 +6,7 @@
   "homepage": "http://www.bucket.limited/",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js --env production"
   },
   "author": "bucketlimited",
   "license": "ISC",
@@ -37,7 +37,7 @@
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.6",
     "style-loader": "^3.3.3",
-    "webpack": "^5.95.0",
+    "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-middleware": "^6.1.1",
     "webpack-dev-server": "^5.1.0",
