@@ -7,6 +7,7 @@ export default function Homepage() {
   const [content, setContent] = useState({})
   const [image, setImage] = useState(null)
   const data = useLoaderData()
+  console.log(data)
 
   useEffect(() => {
     setContent(() => data)
