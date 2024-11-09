@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'production',
-	devtool: 'source-map',
 	entry: './src/index.js',
 	output: {
 		filename: 'main.[contenthash].js',
@@ -12,6 +11,7 @@ module.exports = {
 		publicPath: '/',
 		clean: true,
 	},
+	devtool: 'source-map',
 	optimization: {
 		splitChunks: {
 				chunks: 'all',
