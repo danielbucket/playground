@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.js'
 import './app.style.css'
@@ -9,6 +10,8 @@ import InDev from './pages/InDev/index.js'
 import About from './pages/About/index.js'
 import Contact from './pages/Contact/index.js'
 import ErrorBoundary from './pages/ErrorBoundary/index.js'
+const env = process.env.NODE_ENV
+console.log(env)
 
 const path = '/api/v1'
 
@@ -23,7 +26,9 @@ const router = createBrowserRouter([
         element: <Home />,
         loader: async () => {
           return await fetch(`${path}/home/GET_content`)
-            .then(res => res.json())
+            .then(res => {
+              return res.json()
+            })
             .then(data => data)
             .catch(err => console.error(err))
         },
@@ -68,7 +73,7 @@ const router = createBrowserRouter([
   },
 ])
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = createRoot(document.getElementById('root'))
 
 root.render(
 	<React.StrictMode>
