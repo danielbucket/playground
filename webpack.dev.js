@@ -6,22 +6,26 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
-  output: {
-    filename: 'main.[contenthash].js`',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/',
-    clean: true,
-  },
+	output: {
+		filename: 'main.[contenthash].js',
+		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/',
+		clean: true,
+	},
   devtool: 'inline-source-map',
   devServer: {
     port: 3648,
     static: {
-        directory: path.resolve(__dirname, './dist'),
+        directory: path.resolve(__dirname, 'dist')
     },
+    // client: {
+    //   progress: true
+    // },
     hot: true,
     devMiddleware: {
-        index: 'index.html',
-        writeToDisk: true,
+      index: 'index.html',
+      writeToDisk: true,
+      // serverSideRender: true
     }
   },
   plugins: [
@@ -30,10 +34,9 @@ module.exports = {
       title: 'BucketLab',
       filename: 'index.html',
       description: 'A personal portfolio and a home lab for my web development and IoT projects.',
-      template: path.resolve(__dirname, 'src/templates/app_template.hbs'),
-      minify: false,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
+      template: 'templates/app_template.hbs',
+      minify: false
+    })
   ],
   module: {
     rules: [
