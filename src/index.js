@@ -10,8 +10,6 @@ import InDev from './pages/InDev/index.js'
 import About from './pages/About/index.js'
 import Contact from './pages/Contact/index.js'
 import ErrorBoundary from './pages/ErrorBoundary/index.js'
-const env = process.env.NODE_ENV
-console.log(env)
 
 const path = '/api/v1'
 
@@ -20,18 +18,16 @@ const router = createBrowserRouter([
     path: '/',
     element: <Home />,
     errorElement: <ErrorBoundary />,
+      loader: async () => {
+        return await fetch(`${path}/home/GET_content`)
+          .then(res => res.json())
+          .then(data => data)
+          .catch(err => console.error(err))
+      },
     children: [
       {
         index: true,
         element: <Home />,
-        loader: async () => {
-          return await fetch(`${path}/home/GET_content`)
-            .then(res => {
-              return res.json()
-            })
-            .then(data => data)
-            .catch(err => console.error(err))
-        },
       },
       {
         path: '/about',
@@ -41,7 +37,7 @@ const router = createBrowserRouter([
             .then(res => res.json())
             .then(data => data)
             .catch(err => console.error(err))
-        },
+        }
       },
       {
         path: '/contact',
@@ -55,9 +51,9 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/contact/contact_form',
-            element: <InDev text={'Contact Form'}/>,
-          },
-        ],
+            element: <InDev text={'Contact Form'}/>
+          }
+        ]
       },
       {
         path: '/projects',
@@ -67,10 +63,10 @@ const router = createBrowserRouter([
             .then(res => res.json())
             .then(data => data)
             .catch(err => console.error(err))
-        },
-      },
-    ],
-  },
+        }
+      }
+    ]
+  }
 ])
 
 const root = createRoot(document.getElementById('root'))

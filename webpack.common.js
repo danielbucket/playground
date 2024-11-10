@@ -1,5 +1,4 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const DotenvWebpackPlugin = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
 const path = require('path')
@@ -18,7 +17,6 @@ module.exports = (env) => {
       clean: true,
     },
     plugins: [
-      new DotenvWebpackPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
 				title: 'BucketLab',

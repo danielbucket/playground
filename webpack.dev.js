@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   devtool: 'inline-source-map',
   devServer: {
-    port: 3650,
+    port: 3648,
     hot: true,
     static: {
       directory: path.resolve(__dirname, 'dist')
