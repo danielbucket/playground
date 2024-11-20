@@ -25,6 +25,7 @@ module.exports = (env) => {
 				description: 'A personal portfolio and a home lab for my web development and IoT projects.',
 				minify: true,
 				chunks: ['main'],
+        type: 'module',
 			})
     ],
     module: {

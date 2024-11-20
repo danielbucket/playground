@@ -20,5 +20,18 @@ module.exports = {
 				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			}
 		]
-	}
+	},
+	optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
 }

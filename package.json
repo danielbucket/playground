@@ -1,11 +1,12 @@
 {
-  "name": "playground",
+  "name": "bucketlab",
   "version": "1.0.0",
   "description": "My personal portfolio, and playground for new technologies",
   "main": "./src/index.js",
   "homepage": "http://www.bucket.limited/",
   "scripts": {
-    "dev": "NODE_ENV=development webpack serve --config webpack.common.js --env development",
+    "dev": "webpack serve --config webpack.common.js --env development",
+    "server": "nodemon server/server.js",
     "build": "NODE_ENV=production webpack --config webpack.common.js",
     "start": "NODE_ENV=production node server/server.js"
   },
@@ -37,10 +38,10 @@
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.7.6",
+    "nodemon": "^3.1.7",
     "style-loader": "^3.3.3",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-middleware": "^6.1.1",
     "webpack-dev-server": "^5.1.0",
     "webpack-hot-middleware": "^2.26.1"
   }
